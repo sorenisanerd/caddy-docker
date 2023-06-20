@@ -10,6 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -
+        name: Login to Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: code.devcloud.soren.tools
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      -
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
       -
