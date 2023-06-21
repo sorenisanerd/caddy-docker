@@ -24,6 +24,14 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: code.devcloud.soren.tools/platform/caddy
+          tags: |
+            type=raw,value=latest,enable={{is_default_branch}}
+            type=sha,format=long
+            type=sha
+            type=semver,pattern=v{{major}}.{{minor}}.{{patch}}
+            type=semver,pattern=v{{major}}.{{minor}}
+            type=semver,pattern=v{{major}}
+            type=ref,event=tag
       -
         name: Login to DockerHub
         if: github.event_name != 'pull_request'
