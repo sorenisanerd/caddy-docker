@@ -1,0 +1,4 @@
+# Build artefacts and local scratch.
+*.log
+out/
+.d/
